@@ -9,6 +9,174 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+<style>
+:root{
+  --yellow:#FFD700;
+  --yellow2:#FFC400;
+  --gold:#F2B705;
+  --ink:#151515;
+  --cream:#fffdf0;
+  --white:#ffffff;
+  --muted:#625a2d;
+  --shadow:0 14px 40px rgba(65,48,0,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:linear-gradient(180deg,#fffdf0 0%,#fff8c9 48%,#fffdf0 100%);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+}
+a{text-decoration:none}
+.topbar{
+  background:#171717;
+  color:#fff;
+  border-bottom:3px solid var(--yellow);
+}
+.topbar-inner{
+  min-height:42px;display:flex;align-items:center;justify-content:space-between;
+  gap:15px;font-size:13px
+}
+.topbar a{color:#ffe66d}
+.header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+  box-shadow:0 6px 22px rgba(0,0,0,.07)
+}
+.nav{min-height:76px;display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);margin-right:auto}
+.brand img{width:52px;height:52px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 4px 8px rgba(0,0,0,.13))}
+.brand strong{display:block;font-family:Poppins,sans-serif;font-size:18px;line-height:1}
+.brand small{display:block;font-weight:800;letter-spacing:1.7px;font-size:10px;margin-top:5px;color:#6c5b00}
+nav{display:flex;align-items:center;gap:5px}
+nav a{color:#252525;font-weight:700;font-size:14px;padding:11px 13px;border-radius:10px}
+nav a:hover{background:#fff2a3}
+.nav-cta,.btn-primary{
+  background:linear-gradient(135deg,#ffe44d,#f6b900);
+  color:#171717!important;font-weight:900;border-radius:12px;
+  box-shadow:0 7px 18px rgba(227,173,0,.25)
+}
+.nav-cta{padding:12px 17px}
+.menu-btn{display:none;border:0;background:#fff4a8;border-radius:10px;font-size:23px;padding:8px 11px}
+.container{width:min(1120px,92%);margin:auto}
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 20%,rgba(255,255,255,.75),transparent 28%),
+    linear-gradient(135deg,#ffe83d 0%,#ffd000 47%,#f5b800 100%);
+  padding:78px 0 66px;
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.18);pointer-events:none
+}
+.hero:before{width:360px;height:360px;right:-120px;top:-120px}
+.hero:after{width:220px;height:220px;left:-100px;bottom:-100px}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:50px;align-items:center;position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  color:#6a5200;font-weight:900;letter-spacing:1.4px;font-size:12px
+}
+.hero h1{font-family:Poppins,sans-serif;font-size:clamp(40px,5vw,66px);line-height:1.04;margin:14px 0 20px;max-width:720px}
+.hero h1 span{color:#fff;text-shadow:0 2px 0 rgba(90,60,0,.15)}
+.hero-copy>p{font-size:18px;line-height:1.7;max-width:650px;color:#403600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}
+.btn{display:inline-flex;justify-content:center;align-items:center;padding:14px 20px;border-radius:12px;font-weight:900}
+.btn-outline{border:2px solid #1d1d1d;color:#1d1d1d;background:rgba(255,255,255,.2)}
+.btn-outline:hover{background:#fff}
+.trust-row{display:flex;gap:0;flex-wrap:wrap;margin-top:30px}
+.trust-row>div{padding:0 24px;border-left:1px solid rgba(0,0,0,.22)}
+.trust-row>div:first-child{padding-left:0;border-left:0}
+.trust-row b{display:block;font-size:20px}.trust-row span{font-size:12px;color:#5b4b00}
+.hero-card{
+  min-height:390px;border:1px solid rgba(255,255,255,.75);border-radius:30px;
+  background:rgba(255,255,255,.82);display:flex;flex-direction:column;
+  justify-content:center;align-items:center;box-shadow:0 25px 60px rgba(92,65,0,.22);
+  position:relative;overflow:hidden;padding:35px
+}
+.hero-card .glow{position:absolute;width:300px;height:300px;border-radius:50%;background:#fff2a3;filter:blur(4px)}
+.hero-card img{width:min(260px,80%);max-height:260px;object-fit:contain;position:relative;z-index:1}
+.approved-badge{position:relative;z-index:2;background:#171717;color:#ffe33f;border-radius:999px;padding:11px 17px;font-weight:900;font-size:12px;letter-spacing:.8px;margin-top:20px}
+.section{padding:80px 0}
+.section-heading{text-align:center;max-width:720px;margin:0 auto 38px}
+.section-heading h2,.about-section h2,.contact-section h2{
+  font-family:Poppins,sans-serif;font-size:clamp(30px,4vw,45px);margin:10px 0
+}
+.section-heading p,.about-section p,.contact-section p{color:#655f3a;line-height:1.75}
+.cards.two{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.service-card,.address-card,.contact-box,.service-item{
+  background:rgba(255,255,255,.9);border:1px solid rgba(99,78,0,.12);
+  border-radius:22px;box-shadow:var(--shadow)
+}
+.service-card{padding:30px;transition:.25s}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(65,48,0,.18)}
+.service-card.featured{border:2px solid #f2c400}
+.icon{font-size:38px;margin-bottom:14px}
+.service-card h3,.service-item h3{font-family:Poppins,sans-serif;margin:0 0 9px;font-size:22px}
+.service-card p,.service-item p{color:#6b6541;line-height:1.65}
+.tag{display:inline-block;background:#fff1a1;padding:8px 11px;border-radius:999px;font-size:11px;font-weight:900}
+.services-section{background:linear-gradient(180deg,rgba(255,213,0,.12),rgba(255,255,255,.45))}
+.service-list{display:grid;gap:16px}
+.service-item{padding:24px;border-left:6px solid var(--yellow2)}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:stretch}
+.check-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
+.check-list div{background:#fff6bd;border-radius:12px;padding:13px;font-weight:700;font-size:14px}
+.address-card{padding:30px;background:#171717;color:#fff;border-color:#171717}
+.address-card h3{font-family:Poppins,sans-serif;font-size:25px;margin:8px 0}
+.address-card p{color:#eee;line-height:1.7}
+.pin{font-size:32px}
+.text-link{color:#ffe14a;font-weight:800}
+.contact-section{background:#ffdf27}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.contact-box{display:flex;align-items:center;gap:14px;padding:18px;color:#191919}
+.contact-box span{font-size:25px}.contact-box small{display:block;font-size:10px;font-weight:900;color:#776100;letter-spacing:1px}
+.contact-box strong{display:block;margin-top:3px;font-size:14px}
+.contact-box.whatsapp{background:#171717;color:#fff}.contact-box.whatsapp small{color:#ffe04a}
+footer{background:#111;color:#fff;padding:28px 0;border-top:4px solid var(--yellow)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:44px;height:44px;object-fit:contain;border-radius:50%}
+.footer-brand strong,.footer-brand small{display:block}.footer-brand small{color:#ffe14a;margin-top:3px;font-size:11px}
+.footer-inner p{color:#aaa;font-size:12px}
+.floating{position:fixed;right:18px;bottom:18px;z-index:1100;display:flex;flex-direction:column;gap:10px}
+.floating a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:24px;box-shadow:0 8px 25px rgba(0,0,0,.22)}
+.float-wa{background:#20c76a;color:#fff}.float-call{background:#171717;color:#ffe23e}
+.notice-bar{
+  background:#171717;color:#fff;border-bottom:3px solid #f6c400;
+  display:flex;align-items:center;overflow:hidden;min-height:48px
+}
+.notice-label{background:#ffe04a;color:#111;font-weight:1000;padding:13px 18px;white-space:nowrap;z-index:2}
+.notice-track{white-space:nowrap;overflow:hidden;flex:1}
+.notice-track span{display:inline-block;padding-left:100%;animation:marquee 18s linear infinite;font-weight:800;color:#ffe86a}
+@keyframes marquee{to{transform:translateX(-100%)}}
+.admin-link{
+  position:fixed;left:18px;bottom:18px;z-index:1100;
+  display:inline-flex;align-items:center;gap:8px;padding:12px 16px;
+  background:#171717;color:#ffe13d;border:1px solid #ffe13d;border-radius:999px;
+  font-weight:900;box-shadow:0 8px 25px rgba(0,0,0,.2)
+}
+.admin-link:hover{background:#ffe13d;color:#111}
+@media(max-width:850px){
+  nav{display:none}.menu-btn{display:block}
+  .nav-cta{padding:10px 12px;font-size:12px}
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero{padding:55px 0}.hero-card{min-height:300px}
+}
+@media(max-width:600px){
+  .topbar-inner{justify-content:center}.topbar a{display:none}
+  .cards.two,.contact-actions,.check-list{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+  .brand strong{font-size:15px}
+  .brand img{width:45px;height:45px}
+  .notice-label{font-size:10px;padding:12px 10px}
+  .notice-track span{font-size:12px}
+  .admin-link{left:12px;bottom:80px}
+}
+</style>
+
 </head>
 <body>
   <div class="topbar">
@@ -38,6 +206,14 @@
       <a class="nav-cta" href="tel:+919941356888">Call Now</a>
     </div>
   </header>
+
+  <div class="notice-bar" role="status" aria-label="Important notice">
+    <div class="notice-label">📢 IMPORTANT NOTICE</div>
+    <div class="notice-track">
+      <span>From 15-09-2026 Virtual Driving Licence &amp; Registration Certificate can be downloaded from Parivahan Portal</span>
+    </div>
+  </div>
+
 
   <main id="home">
     <section class="hero">
@@ -96,10 +272,7 @@
           <p>Support for a wide range of RTO-related services.</p>
         </div>
         <div class="service-list">
-          <div class="service-item"><span>01</span><div><h3>Two wheeler Training cum Licence</h3></div></div>
-          <div class="service-item"><span>02</span><div><h3>Four wheeler Training cum Licence</h3></div></div>
-          <div class="service-item"><span>03</span><div><h3>Lmv Transport (BADGE) Licence</h3></div></div>
-          <div class="service-item"><span>04</span><div><h3>Driving Licence & Registration related services</h3></div></div>
+          <div class="service-item"><div><h3>All Kinds of RTO Works</h3><p>All kinds of RTO-related applications and services done here</p></div></div>
         </div>
       </div>
     </section>
@@ -150,11 +323,15 @@
     </div>
   </footer>
 
+
+  <a class="admin-link" href="admin-login.html" aria-label="Admin Login">🔐 Admin Login</a>
+
   <div class="floating">
     <a class="float-wa" href="https://wa.me/919941356888" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
     <a class="float-call" href="tel:+919941356888" aria-label="Call">☎</a>
   </div>
 
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
   <script src="script.js"></script>
 </body>
 </html>
